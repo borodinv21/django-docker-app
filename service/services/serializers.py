@@ -16,8 +16,7 @@ class SubscriptionSerializer(serializers.ModelSerializer):
     price = serializers.SerializerMethodField()
 
     def get_price(self, instance):
-        full_price = instance.service.full_price
-        return full_price - full_price * (instance.plan.discount_percent / 100)
+        return instance.price
 
 
     class Meta:
